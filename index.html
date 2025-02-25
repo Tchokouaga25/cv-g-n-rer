@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
@@ -138,5 +139,146 @@
                 </p>
             </div>
         </div>
+=======
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <title>Générateur de CV</title>
+</head>
+<body class="flex   gap-5 min-h-screen bg-gray-100">
+    <div class="w-full max-w-2xl ml-6 p-6 mt-5 bg-white  shadow-xl shadow-black">
+        
+        <h2 class="text-2xl font-bold text-center text-blue-700 mb-3">Générateur de CV</h2>
+        <div>
+            <p class=" text-md font-bold pb-2"> Photos profil </p>
+            
+            <input  type="file" id="uploadImage" accept="image/*" style="display: none ;">
+            <label for="uploadImage" id="fileLabel" class="button w-15 border  bg-[#D5D5D5]">📸 Choisir une image</label>
+        </div>
+        <form class="outline-none">
+            <p class=" text-md font-bold pb-2"> CONTACT </p>
+            <div class="mb-4 ">
+                <label class=" border-none font-bold text-gray-600" for="name">Nom Complet</label>
+                <input type="text" id="name" name="name" class="w-full px-6   border-b focus:outline-none bg-[#D9D9D9]" placeholder="Votre nom complet" oninput="updateCV()">
+            </div>
+            
+            <div class="mb-4 ">
+                <label class=" border-none font-bold text-gray-600" for="Age">Age</label>
+                <input type="Number" id="Age" name="Age" class="w-full px-6   border-b focus:outline-none bg-[#D9D9D9]" placeholder="Votre numéro de téléphone" oninput="updateAge()">
+            </div>
+            <div class="flex gap-5">
+                <p class=" text-md font-bold pb-2"> Sexe </p>
+                <label ><input type="checkbox" name="hobbies" value="Femme" onclick="onlyOne(this)" > Femme</label><br>
+                <label><input type="checkbox" name="hobbies" value="Homme" onclick="onlyOne(this)"> Homme</label><br>
+            </div>
+            <div class="mb-4 ">
+                <label class=" border-none font-bold text-gray-600" for="TitrePoste">Titre du Poste</label>
+                <input type="text" id="TitrePoste" name="TitrePoste" class="w-full px-6   border-b focus:outline-none bg-[#D9D9D9]" placeholder="Votre nom complet" oninput="updateTitrePoste()">
+            </div>
+            <div class="flex gap-5">
+                <p class=" text-md font-bold pb-2"> Situation Actuelle </p>
+                <label ><input type="checkbox" name="hobbies" value="Moyens" onclick="onlyOne(this)" > Marié</label><br>
+                <label><input type="checkbox" name="hobbies" value="Intermédiare" onclick="onlyOne(this)"> Célibataire</label><br>
+                <label><input type="checkbox" name="hobbies" value="Avancée" onclick="onlyOne(this)"> Veuve</label><br>
+                
+            </div>
+            <div class="mb-4">
+                <label class="font-bold block text-gray-600" for="Description">Description</label>
+                <textarea id="Description" name="Description" rows="4" class="w-full  border px-6   border-b focus:outline-none bg-[#D9D9D9]" placeholder="Entrer votre Description" required  oninput="updateDescription()""></textarea>
+            </div>
+            <div class="mb-4">
+                
+                <label class=" font-bold block text-gray-600" for="email">Email</label>
+                <input type="email" id="email" name="email" class="w-full px-6   border-b focus:outline-none bg-[#D9D9D9]" placeholder="Entrez votre email" required oninput="validateEmail()">
+                <p id="emailError" class="text-red-500 text-sm hidden">Cet email n'existe pas !Entrer une email valide</p>
+            </div>
+            <div class="mb-4 ">
+                <label class=" border-none font-bold text-gray-600" for="Phone">Téléphone</label>
+                <input type="Number" id="Phone" name="Phone" class="w-full px-6   border-b focus:outline-none bg-[#D9D9D9]" placeholder="Votre numéro de téléphone" oninput="updatePhone()">
+            </div>
+            
+            <div class="mb-4 ">
+                <label class=" border-none font-bold text-gray-600" for="Adresse">Adresse</label>
+                <input type="text" id="Adresse" name="Adresse" class="w-full px-6   border-b focus:outline-none bg-[#D9D9D9]" placeholder="Votre Adresse" oninput="updateAdresse()">
+            </div>
+           
+
+            <p class=" text-md font-bold pb-2"> COMPETENCES </p>
+            <div class="mb-4">
+                <label class="font-bold block text-gray-600" for="Compétence">Compétences</label>
+                <textarea id="Compétence" name="Compétence" rows="4" class="w-full  border px-6   border-b focus:outline-none bg-[#D9D9D9]" placeholder="Entrer vos Compétence" required  oninput="updateCompétence()""></textarea>
+            </div>
+            <p class=" text-md font-bold pb-2"> LANGUES </p>
+            <div class="flex gap-5">
+                <p class=" text-md font-bold pb-2"> Francais </p>
+                <label ><input type="checkbox" name="hobbies" value="Moyens" onclick="onlyOne(this)" > Moyens</label><br>
+                <label><input type="checkbox" name="hobbies" value="Intermédiare" onclick="onlyOne(this)"> Intermédiare</label><br>
+                <label><input type="checkbox" name="hobbies" value="Avancée" onclick="onlyOne(this)"> Intermédiare</label><br>
+                
+            </div>
+
+            <div class="flex gap-5">
+                <p class=" text-md font-bold pb-2"> Anglais </p>
+                <label ><input type="checkbox" name="hobbies" value="Moyens" onclick="onlyOne(this)"> Moyens</label>
+                <label><input type="checkbox" name="hobbies" value="Intermédiare" onclick="onlyOne(this)"> Intermédiare</label>
+                <label><input type="checkbox" name="hobbies" value="Avancée"onclick="onlyOne(this)"> Intermédiare</label>
+            </div>
+                
+            <p class=" text-md font-bold my-3"> FORMATION </p>
+            <div class=" format1 " id="format">
+                
+                <div class=" mx-5 p-3    format">
+    
+                        <label class="fond-bold  block " for="NomEtablissement">Nom Etablissement</label>
+                        <input type="text" id="NomEtablissement" name="NomEtablissement[]" class="w-full px-6  mb-2 border-b focus:outline-none bg-[#D9D9D9]" placeholder=" Nom Etablissement" oninput="updateNomEtablissement()">
+                        
+                        <label class="fond-bold  block " for="DiplômesObtenus">Diplômes obtenus</label>
+                        <input type="text" id="DiplômesObtenus" name="DiplômesObtenus[]" class="w-full px-6 mb-2  border-b focus:outline-none bg-[#D9D9D9]" placeholder="Diplômes obtenus" oninput="updateDiplômesObtenus()">
+                       
+                        <label class="fond-bold  block " for="AnnéeObtention">année d’obtention</label>
+                        <input type="date" id="AnnéeObtention" name="AnnéeObtention[]" class="w-full px-6   border-b focus:outline-none bg-[#D9D9D9]" placeholder="AnnéeObtention" oninput="updateAnnéeObtention()">
+                        
+                </div>
+                <div class="justify-end">
+                    <button type="button"  id="BBoutton" oninput="addNewFormation()"  class="w-38 h-8  mb-5 mt-2 font-bold text-white rounded-lg  bg-blue-700 "><i class="fa-solid fa-plus "></i> New Formation</button>  
+                </div>
+                
+            </div> 
+            
+            <p class=" text-sm font-bold"> EXPERIENCE PROFESSIONNEL </p>
+            <div class=" format2 " id="format0">
+                
+                <div class="mx-5 p-3   format0">
+    
+                        <label class="block fond-bold" for="NomEntreprise">Nom de Entreprise</label>
+                        <input type="text" id="NomEntreprise" name="NomEntreprise[]" class="w-full px-6  mb-2 border-b focus:outline-none bg-[#D9D9D9]" placeholder=" Nom Etablissement" oninput="updateNomEntreprise()">
+                        
+                        <label class="block fond-bold" for="PosteOccupé">Poste Occupé</label>
+                        <input type="text" id="PosteOccupé" name="PosteOccupé[]" class="w-full px-6  mb-2 border-b focus:outline-none bg-[#D9D9D9]" placeholder="Diplômes obtenus" oninput="updatePosteOccupé()">
+                       
+                        <label class="block fond-bold" for="Durée">Durée</label>
+                        <input type="date" id="Durée" name="Durée[]" class="w-full px-6  mb-2 border-b focus:outline-none bg-[#D9D9D9]" placeholder="AnnéeObtention" oninput="updateDurée()">
+                        
+                        <label class="block fond-bold" for="DescriptionMissions">Description des Missions</label>
+                        <input type="text" id="DescriptionMissions" name="DescriptionMissions[]" class="w-full px-6  mb-2 border-b focus:outline-none bg-[#D9D9D9]" placeholder="Diplômes obtenus" oninput="updateDescriptionMissions()">
+                       
+                </div>
+                <div class="bouttn">
+                    <button type="button"  id="BBoutton1"   class="w-40 h-8  mb-5 mt-2 font-bold text-white rounded-lg  bg-blue-700 "><i class="fa-solid fa-plus"></i> New Expériences</button>  
+                </div>
+                
+            </div> 
+            
+            <button type="submit" class="w-22 h-8  mb-5 mt-2 font-bold text-white rounded-lg  bg-green-700 " onclick="Savelocalstorge ()"> <i class="fa-solid fa-floppy-disk pr-2"></i>Save</button>
+            
+            <button type="submit" class="w-25 h-8  mb-5 mt-2 font-bold text-white rounded-lg  bg-black-700 " onclick="Restorlocalstorge ()"> <i class="fa-solid fa-floppy-disk pr-2"></i>Restore</button>
+            <button type="submit" class="w-25 h-8  mb-5 mt-2 font-bold text-white rounded-lg  bg-black-700 " onclick="Supprimerlocalstorge ()"> <i class="fa-solid fa-floppy-disk pr-2"></i>Supprimer</button>
+
+        </form>
+    </div>
+    
+    <script src="script.js"></script>
+>>>>>>> 4a6dbafeeac2afab624994620499d42e65558794
 </body>
 </html>
