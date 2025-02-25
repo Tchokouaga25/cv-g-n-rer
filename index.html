@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+        <div class="align-items-end">
+            <button type="submit" class=" w-40 h-10  font-bold text-black rounded-lg hover:bg-green-70"><i class="fa-solid fa-download pr-2"></i>download</button>
+        </div>
+        <div class="flex gap-0 relative-flex bg-gray-100  h-210 max-w-[640px]">
+            <div class="bg-blue-900 w-105">
+                
+                <div class="w-42 h-42 rounded-full bg-white translate-y-4  translate-x-35">
+                    <img class="rounded-full w-40 h-40 translate-y-2 ml-5 " id="preview" alt="" >
+                </div>
+                
+                <div class="mt-10">
+                    <p class="font-bold font-serif pl-3">CONTACT</p>
+                    <hr class="border-t border-gray-300 my-4">
+                    <div class="flex gap-2 ml-2">
+                        <div class=" flex flex-col gap-2">
+                            <i class="fa-light fa-phone"></i>
+                            <i class="fa-solid fa-envelope"></i>
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="text-white text-base">
+                            <p><h1 class="text-sm font-bold">  <span id="phone"></span></h1></p>
+                            <p><h1 class="text-sm font-bold" >  <span id="EEmail"></span></h1></p>
+                            <p><h1 class="text-sm font-bold">  <span id="adresse"></span></h1></p>
+                            <p><h1 class="text-sm font-bold">  <span id="age"></span></h1></p>
+                        </div>
+                    </div>
+                    <p  class="font-bold font-serif mt-9 pl-3">COMPETENCES</p>
+                    <hr class="border-t border-gray-300 my-4">
+                    <div class="pl-2 text-white">
+                        <p><textarea id="compétence" rows="4" class="w-full px-4 py-2 mt-1  focus:outline-none" placeholder="Vos compétence" required></textarea></p>
+                        
+                    </div>
+                    <div class="">
+                        <p  class="font-bold font-serif mt-5 pl-3">LANGUES</p>
+                        <hr class="border-t border-gray-300 my-4">
+                        <div class="flex  relative-flex">
+                        <div class="pl-2 text-white">
+                            <P>Francais</P>
+                            <p>Anglais </p>
+                            <p>Chinois</p>
+                        </div>
+                        <div class="flex flex-col gap-4 mt-2">
+                            <button  class=" boutton1 ring  bg-blue-600 rounded-full w-16 h-2 ml-5 bg-white">v</button>
+                            <button  class=" boutton1 ring  bg-blue-600 rounded-full w-9 h-2 ml-5 bg-white">v</button>
+                            <button  class=" boutton1 ring  bg-blue-600 rounded-full w-8 h-2 ml-5 bg-white">v</button>
+                        </div>
+                        </div>
+                    
+                    </div>
+                    <p class="font-bold font-serif pt-3 pl-3">LOISIRS</p>
+                    <hr class="border-t border-gray-300 my-4">
+                    <div class="pl-2 text-white">
+                        <p>chanter</p>
+                        <p>tricot</p>
+                        <p>Animés</p>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="">
+                    <h1 class="text-sm font-bold">  <span id="nom"></span></h1>
+                </div>
+                <div class="mt-40 ">
+                    <div class="w-50 h-5 ml-45 bg-black ">
+                        <p class="font-bold font-serif whitespace-pre-line pl-30 -z-10 text-white">Description</p>
+                    </div>
+                    
+                    <hr class="border-t border-gray-400 w-1/2 my-4">
+                    <p class="whitespace-pre-line text-sm pl-6">
+                        <textarea id="description" rows="4" class="w-full px-4 py-2 mt-1   focus:outline-none" placeholder="Votre description" required></textarea>
+                    </p>
+                        <!-- Jeune diplômé en informatique avec une spécialisation en développement web, possédantune expérience pratique 
+                    dans la création d'applications réactives et conviviales. 
+                    Compétent en HTML, CSS, JavaScript et Python, avec une 
+                    passion pour l'innovation technologique. Motivé par les 
+                    défis,je cherche à rejoindre une équipe dynamique 
+                    où je pourrai mettre en œuvre mes compétences 
+                    techniques et contribuer à des projets ambitieux. -->
+                    <div class="w-50 h-5 ml-45 bg-black mt-10 ">
+                        <p class="font-bold font-serif  pl-19 text-white">FORMATION</p>
+                        <h1 class="text-sm font-bold"> <span id="nomEtablissement"></span></h1>
+                    
+                        <div class="mb-4">
+                        
+                            <h1 class="text-sm font-bold"> <span id="diplômesObtenus"></span></h1>
+                        </div>
+                        <div class="mb-4">
+                        
+                            <h1 class="text-sm font-bold">  <span id="annéeObtention"></span></h1>
+                        </div>
+                    </div>
+                    <hr class="border-t border-gray-400 w-1/2 my-4">
+                    <!-- <div class="pl-6">
+                         <p>Probatoire</p>
+                         <p class="text-xs font-bold">2023,[Douala,Camaroun]</p>
+                         <p>Baccalaureat</p>
+                         <p class="text-xs font-bold">2022,[Douala,Camaroun]</p>
+                    </div> -->
+                    <div class="w-88 h-5 ml-5 bg-black mt-9">
+                        <p class="font-bold font-serif text-white pl-13">EXPERIENCE PROFESSIONNELLE</p>
+                    </div>
+                    <hr class="border-t border-gray-400 w-1/2 my-4">
+
+                    <!-- <p class="text-base pl-6">Stage de 3 ème| Credit Agricole </p>
+                    <p class="text-xs pl-6 font-bold">Juin 2022 - Décembre 2022</p>
+                    <p class="whitespace-pre-line text-sm pl-6">Gestion de campagnes publicitaires sur les réseaux sociaux.
+                    Analyse des performances des campagnes et préparation 
+                    de rapports mensuels.Participation à la création de 
+                    contenu pour le site web et les newsletters.</p> -->
+                    <div>    
+                        <h1 class="text-sm font-bold"> <span id="nomentreprise"></span></h1>
+                    
+                        <div class="mb-4">
+                        
+                            <h1 class="text-sm font-bold"> <span id=" posteoccupé"></span></h1>
+                        </div>
+                        <div class="mb-4">
+                        
+                            <h1 class="text-sm font-bold">  <span id="durée"></span></h1>
+                        </div>
+                        <div class="mb-4">
+                        
+                            <h1 class="text-sm font-bold">  <span id="descriptionmissions"></span></h1>
+                        </div>
+                    </div>
+
+                </p>
+            </div>
+        </div>
+</body>
+</html>
