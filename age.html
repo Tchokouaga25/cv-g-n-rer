@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas-pro/dist/html2canvas.min.js"></script>
+
+
+    <title>Document</title>
+</head>
+
+<body class=" flex flex-col bg-[#D3D3D3]  ">
+    
+    <div class="flex w-full h-15 bg-blue-700 justify-end items-center gap-x-5 ">
+        <button type="submit" class="w-40 h-10   font-bold text-white rounded-lg bg-black font-bold hover:bg-green-700 " onclick="Savelocalstorge()"> <i class="fa-solid fa-floppy-disk pr-2"></i>Save</button>
+                        
+        <button type="submit" class="w-40 h-10   font-bold text-white rounded-lg bg-black  hover:bg-green-700 " onclick="Restorlocalstorge()"> <i class="fa-solid fa-floppy-disk pr-2"></i>Restore</button>
+        <button type="submit" class="w-40 h-10   font-bold text-white rounded-lg bg-black hover:bg-green-700 " onclick="SupprimerLocalStorage()"> <i class="fa-solid fa-floppy-disk pr-2"></i>Supprimer</button>
+
+        <button id="tel" class="w-40 h-10 bg-black font-bold text-white mr-10 rounded-lg bg-black hover:bg-green-700"><i class="fa-solid fa-download pr-2"></i>download</button>
+    </div>
+    <!-- conteneur des deux div -->
+    <div class=" flex gap-8 gap-2 md:flex-row ">
+            <!-- Formulaire de Génération de CV -->
+            <div class="w-[43%] h-150 bg-white border border-none shadow-xl pl-5 overflow-y-auto pr-2">
+                <h1 class="text-center text-blue-700 font-bold text-xl p-5"> Générateur De CV</h1>
+                <h2 class="pb-4"> Remplir le formulaire avec vos information puis cliquer sur télécharger</h2>
+                
+                <!-- photo profil -->
+                <h1 class="font-bold pl-6 text-xl h-10 bg-black text-white rounded-sm mr-5"> INFORMATION PERSONNELLE</h1>
+                <div class="flex my-5 gap-2 ">
+                    <div class="h-28 w-35   bg-[#D5D5D5] flex flex-col items-center justify-center rounded-sm mb-2">    
+                        <input   type="file" class=" w-15 h-40 " id="uploadImage" accept="image/*" style="display: none ;">
+                        <label for="uploadImage" id="fileLabel" class="button   cursor-pointer "><i class="fas fa-user fa-4x hover:text-blue-700" aria-hidden="true"></i></label>
+                        <p class="text-sm">Choisir une image</p>
+                    </div>
+                    
+                    <form class=" flex flex-col outline-none ">
+                        <!-- nom -->
+                        <div class="mb-4 ">
+                            <label class=" border-none font-bold text-lg " for="name">Nom Complet :</label>
+                            <input type="text" id="name" name="name" class=" w-68 h-8 pl-2 rounded-sm  border-b focus:outline-none bg-[#D9D9D9] " placeholder="Votre nom complet" oninput="updateCV()">
+                        </div>
+                        <!-- age -->
+                        <div class="mb-4 ">
+                            <label class=" border-none font-bold text-lg mr-21 " for="Age">Age :</label>
+                            <input type="Number" id="Age"  name="Age" class="w-68 h-8 pl-2 rounded-sm border-b focus:outline-none bg-[#D9D9D9]" placeholder="Votre age" oninput="updateAge()">
+                            <div  id="age"></div>
+                            <p id="AgeError" class="text-red-500 text-sm hidden">Cet Age n'existe pas Valide !Entrer un age compris entre 18 et 65 ans</p> 
+                            
+                        </div>
+                       
+                    </form>
+                </div> 
+                
+                <div class="flex my-5 gap-2 ">
+                       
+                    <form class="outline-none ">
+                        <!-- téléphone -->
+                        <div class="mb-4 ">
+                            <label class=" border-none font-bold text-lg mr-4" for="Phone">Téléphone :</label>
+                            <input type="Number" id="Phone" name="Phone" class=" w-107 h-8 pl-2 rounded-sm  border-b focus:outline-none bg-[#D9D9D9]" placeholder="Votre numéro de téléphone" oninput="updatePhone()">
+                            <p id="TelError" class="text-red-500 text-sm hidden">Entrer un numero Vlide</p>
+                        
+                        </div>
+                        <!-- email -->
+                        <div class="mb-4">
+                            
+                            <label class=" font-bold  text-lg mr-14" for="email">Email :</label>
+                            <input type="email" id="email" name="email" class=" w-107 h-8 pl-2 rounded-sm   border-b focus:outline-none bg-[#D9D9D9]" placeholder="Entrez votre email" required oninput="validateEmail()">
+                            <p id="emailError" class="text-red-500 text-sm hidden">Cet email n'existe pas Valide !Entrer une email valide</p>
+                        </div>
+                        <!-- adresse -->
+                        <div class="mb-4 ">
+                            <label class=" border-none font-bold text-lg mr-9" for="Adresse">Adresse :</label>
+                            <input type="text" id="Adresse" name="Adresse" class=" w-107 h-8 pl-2 rounded-sm border-b focus:outline-none bg-[#D9D9D9]" placeholder="Votre Adresse" oninput="updateAdresse()">
+                        </div>
+                        <!-- Sexe -->
+                        <div class="flex gap-5 mb-4">
+                            <p class=" text-lg font-bold pb-2"> Sexe </p>
+                            <label><input type="radio" name="femme" value="Femme" onclick="updateSexe()"> Femme</label><br>
+                            <label><input type="radio" name="homme" value="Homme" onclick="updateSexe()"> Homme</label><br>
+                        </div>
+                        <div class="flex gap-5 mb-4">
+                            <p class=" text-md font-bold pb-2"> Situation Actuelle </p>
+                            <label ><input type="radio" name="marié" value="Marié" onclick="updateSituation()" > Marié</label><br>
+                            <label><input type="radio" name=" célibataire" value=" Célibataire" onclick="updateSituation()"> Célibataire</label><br>
+                            <label><input type="radio" name="veuve" value="Veuve" onclick="updateSituation()"> Veuve</label><br>
+                            
+                        </div>
+                        <!-- titre du poste -->
+                        <div class="mb-4 ">
+                            <label class=" border-none font-bold " for="TitrePoste">Titre du Poste :</label>
+                            <input type="text" id="TitrePoste" name="TitrePoste" class="w-107 h-8 pl-2 rounded-sm border-b focus:outline-none bg-[#D9D9D9]" placeholder="Entrer le poste" oninput="updateTitrePoste()">
+                        </div>
+                        <!-- description -->
+                        <p class="font-bold  text-lg bg-black text-white px-6 py-3 my-5 rounded-sm" for="Description">DESCRIPTIONS</p> 
+                        <div class="mb-4 pl-6">
+                            <!-- <label class="font-bold border-none " for="Description">Description :</label> -->
+                            <textarea id="Description" name="Description"  class=" w-121 h-40  rounded-sm pl-2 border-b focus:outline-none bg-[#D9D9D9]" placeholder="Entrer votre Description" required  oninput="updateDescription()""></textarea>
+                        </div>
+                        <!-- compétence -->
+                        <p class=" font-bold  text-lg bg-black text-white px-6 py-3 my-5 rounded-sm"> COMPETENCES </p>
+                        <div class="mb-4 pl-6">
+                            <!-- <label class="font-bold block text-gray-600" for="Compétence"></label> -->
+                            <textarea id="Compétence" name="Compétence"  class=" w-121 h-40  rounded-sm pl-2  border-b focus:outline-none bg-[#D9D9D9]" placeholder="Entrer vos Compétence" required  oninput="updateCompétence()""></textarea>
+                            <div class="flex justify-end  mb-3 mt-2 ">
+                                <button type="button"   onclick="ajouterCompetences()"  class="w-43 h-11 p-2 mr-11 font-bold text-white rounded-lg  bg-blue-700 "><i class="fa-solid fa-plus "></i> New Compétence</button>  
+                            </div>
+                            <ul class="list-Exp mt-2" id="listeExp"  ><span id= "data-id2"></span></ul><br>
+                        </div>
+                        <!-- formartion -->
+                        <p class=" font-bold  text-lg bg-black text-white px-6 py-3 my-5 rounded-sm"> FORMATION </p>
+                        <div class="format  mb-4 pl-6 flex flex-col space-y-5">
+
+                            <label class="font-bold " for="NomEtablissement">Nom Etablissement :
+                            <input type="text" id="NomEtablissement" name="NomEtablissement[]" class=" w-85 h-8 pl-2 rounded-sm border-b focus:outline-none bg-[#D9D9D9]" placeholder=" Nom Etablissement" oninput="updateNomEtablissement()">
+                            </label>
+
+                            <label class="font-bold " for="DiplômesObtenus">Diplômes obtenus :
+                            <input type="text" id="DiplômesObtenus" name="DiplômesObtenus[]" class="w-87 h-8 pl-2 rounded-sm  border-b focus:outline-none bg-[#D9D9D9]" placeholder="Diplômes obtenus" oninput="updateDiplômesObtenus()">
+                            </label>
+                            <label class="font-bold  " for="AnnéeObtention">année d’obtention :
+                            <input type="date" id="AnnéeObtention" name="AnnéeObtention[]" class="w-87 h-8 pl-2 rounded-sm  border-b focus:outline-none bg-[#D9D9D9]" placeholder="AnnéeObtention" oninput="updateAnnéeObtention()">
+                            </label>
+                        </div>
+                        <div class="flex justify-end  mb-3 mt-2 ">
+                            <button type="button"  id="" onclick="ajouterFormation()"  class="w-43 h-11 p-2 mr-11 font-bold text-white rounded-lg  bg-blue-700 "><i class="fa-solid fa-plus "></i> New Formation</button>  
+                        </div>
+                        <ul class="list-Formation mt-2" id="listeFormation"  ><span id= "data-id1"></span></ul>
+                        <!-- experience professionnelle -->
+                        <p class=" font-bold  text-lg bg-black text-white px-6 py-3 my-5 rounded-sm"> EXPERIENCE PROFESSIONNEL </p>
+                        <div class="format0  mb-4 pl-6 flex flex-col space-y-5">
+                    
+                            <label class="font-bold" for="NomEntreprise">Nom de Entreprise :
+                            <input type="text" id="NomEntreprise" name="NomEntreprise[]" class="w-85 h-8 pl-2 rounded-sm  mb-2 border-b focus:outline-none bg-[#D9D9D9]" placeholder=" Nom de Entreprise" oninput="updateNomEntreprise()">
+                            </label>
+
+                            <label class="font-bold mr-10" for="PosteOccupé">Poste Occupé :
+                            <input type="text" id="PosteOccupés" name="PosteOccupé[]" class="w-85 h-8 pl-2 rounded-sm  mb-2 border-b focus:outline-none bg-[#D9D9D9]" placeholder="Poste Occupé" oninput="updatePosteOccupé()">
+                            </label>
+                            <div class="mb-4 flex ">
+                                <label class=" font-bold  ">Durée Début :
+                                <input type="date" id="DuréeDébut" name="DuréeDébut[]" class="w-20 h-8 pl-2 rounded-sm border-b focus:outline-none bg-[#D9D9D9]" placeholder="Durée Début" oninput="updateDuréeDébut()">
+                                </label>
+                                <label class="font-bold " for="DuréeFin">Durée Fin :
+                                <input type="date" id="DuréeFin" name="DuréeFin[]" class="w-20 h-8 pl-2 rounded-sm focus:outline-none bg-[#D9D9D9]" placeholder="Durée Fin" oninput="updateDuréeFin()">
+                                </label>
+                                <label class=" font-bold " for="NombreAnnée">Nombre d'Année :
+                                <input type="nomber" id="NombreAnnée" name="NombreAnnée[]" class="w-20 h-8 pl-2 rounded-sm focus:outline-none bg-[#D9D9D9]" placeholder="Nombre d'Année" oninput="updateNombreAnnée()">
+                                </label>
+                            </div>
+                            <label class=" font-bold" for="DescriptionMissions">Description des Missions</label>
+                            <textarea id="DescriptionMissions" name="DescriptionMissions[]"  class="  w-121 h-40  rounded-sm pl-2  border-b focus:outline-none bg-[#D9D9D9]" placeholder="Entrer la Description de Missions" required  oninput="updateDescriptionMissions()"></textarea>
+                            <div class="bouttn flex justify-end  mb-3 mt-2 ">
+                                <button type="button"  id="BBoutton1" onclick="ajouterExpériences()"  class="w-43 h-11 p-2 mr-11 font-bold text-white rounded-lg  bg-blue-700 "><i class="fa-solid fa-plus"></i> New Expériences</button>  
+                            </div>
+                            <ul class="list-group mt-2" id="listeCompetences"  ><span id= "data-id"></span></ul>
+                        </div>
+                         <!-- langues -->
+                        <p class="font-bold  text-lg bg-black text-white px-6 py-3 my-5 rounded-sm"> LANGUES </p>
+                        <div class="mb-4 pl-6">
+                            <div class="flex gap-5 mb-4 ml-6">
+                                <p class="text-md font-bold pb-2">Français</p>
+                                <label><input type="checkbox" name="francais" value="Moyens" onclick="onlyOne(this)"> Moyens</label><br>
+                                <label><input type="checkbox" name="francais" value="Intermédiaire" onclick="onlyOne(this)"> Intermédiaire</label><br>
+                                <label><input type="checkbox" name="francais" value="Avancée" onclick="onlyOne(this)"> Avancée</label><br>
+                            </div>
+                            
+                            <div class="flex gap-5 mb-4">
+                                <p class="text-md font-bold pb-2">Anglais</p>
+                                <label><input type="checkbox" name="anglais" value="Moyens" onclick="onlyOne(this)"> Moyens</label><br>
+                                <label><input type="checkbox" name="anglais" value="Intermédiaire" onclick="onlyOne(this)"> Intermédiaire</label><br>
+                                <label><input type="checkbox" name="anglais" value="Avancée" onclick="onlyOne(this)"> Avancée</label><br>
+                            </div> 
+                        </div>
+                        <!-- loisirs -->
+                        <p class="font-bold  text-lg bg-black text-white px-6 py-3 my-5 rounded-sm"> LOISIRS </p>
+                        <div class="mb-4 pl-6">
+                            <label class="font-bold " for="Loisirs"></label>
+                            <textarea id="Loisirs" name="Loisirs" class=" w-121 h-30  rounded-sm pl-2   border-b focus:outline-none bg-[#D9D9D9]" placeholder="Entrer vos Loisirs" required  oninput="updateLoisirs()""></textarea>
+                            <div class="flex justify-end  mb-3 mt-2">
+                                <button type="button"   onclick="ajouterLoisirs()"  class="w-43 h-11 p-2 mr-11 font-bold text-white rounded-lg  bg-blue-700 "><i class="fa-solid fa-plus "></i> New Loisirs</button>  
+                            </div>
+                            <ul class="list-loisir mt-2" id="listeloisir"  ><span id= "data-id3"></span></ul><br>
+                        </div>
+                    </form>
+                        
+                </div>    
+
+            </div>
+    
+            <!-- Rendu du Génération de CV -->
+            <div class="w-[50%] flex h-200 bg-white  my-4 border-none">
+
+                <!-- 1er partie -->
+                <div class="w-[45%] bg-gray-100 h-200 pl-6">
+                    <div class="flex items-center justify-center pt-5">
+                        <img class="w-40 h-32  object-cover " id="preview" alt="" >
+                    </div>
+                    <h1 class="font-bold text-md mt-10 ">INFORMATION PERSONNELLE</h1>
+                    <hr class="border-t border-black border-3 w-65 my-1 ">
+                    <div class="flex flex-col gap-2 my-5">
+                        <div><h1 class="text-sm font-bold"></h1><i class="fa-solid fa-phone  text-md pr-2"></i><span id="phone"></span></h1></div>
+                        <div><h1 class="text-sm font-bold pt-1" >  <i class="fa-solid fa-envelope  text-md pr-2"></i><span id="EEmail"></span></h1></div>
+                        <div><h1 class="text-sm font-bold pt-1">  <i class="fa-solid fa-location-dot  text-md pr-2"></i><span id="adresse"></span></h1></div>
+                        <div><h1 class="text-sm font-bold pt-1"> <span class="font-bold  text-md pr-2">Age:</span> <span id="age"></span></h1></div>
+                        <div><h1 class="text-sm font-bold pt-1">  <span class="font-bold  text-md pr-2">Sexe:</span> <span id="sexe"></span></h1></div>
+                        <div><h1 class="text-sm font-bold pt-1"></h1><span class="font-bold  text-sm pr-2">Situation:</span> <span id="situation"></span></h1></div>
+                    </div>
+                        <!-- Languages -->       
+                    <div class="mt-4">
+                        <p  class="font-bold text-md ">LANGUES</p>
+                        <hr class="border-t border-black border-3 w-65 my-1 ">
+                        
+                        <div class=" text-back">
+                            <p id="resultat"></p>
+                        </div>
+                    </div>
+                    <!-- hobbies -->
+                    <div class="mt-4">
+                        <p class="font-bold text-md">LOISIRS</p>
+                        <hr class="border-t border-black border-3 w-65 my-1">
+                        <ul class="list-loisir" id="cvloisir"><span id="data-id3"></span></ul>
+                        
+                    </div>
+                </div>
+
+                <!-- 2er partie -->
+                <div class="flex flex-col gap-y-3 text-wrap ml-6 ">
+                    <div class="mb-4 ">
+                        <h1 class="text-3xl font-bold text-balance ml-5">  <span id="nom"></span></h1>
+                    </div>
+                    <!-- titre du poste -->
+                    <div><h1 class="text-sm pt-1"> <span id="titreposte"></span></h1></div>
+                   
+                    <!--  description -->
+                    <div class="mb-4 ">
+                        <p class="font-bold text-md ">Description</p>
+                        <hr class="border-t border-black border-3 w-65 my-1">
+                        <ul ><span id="description" ></span></ul>
+                   </div class="mb-4 " > 
+                     <!-- vos compétences -->
+                    <div>
+                        <p class="font-bold text-md">COMPETENCES</p>
+                        <hr class="border-t border-black border-3 w-65 my-1">
+                        <ul class="list-group" id="cvCompetences"><span id="data-id"></span></ul>
+                    </div>
+                    <!-- Formation  -->
+
+                    <div class=" mb-3  ">
+                        
+                        <p class="font-bold text-md ">FORMATION</p>
+                        
+                        <hr class="border-t border-black border-3 w-65 my-1">    
+                        <ul class="list-Formation" id="cvFormation">
+                            <li><span id="nomEtablissement"></span></li>
+                            <li><span id="diplômesObtenus"></span></li>
+                            <li><span id="annéeObtention"></span></li>
+                            <span id="data-id1"></span>
+                        </ul>
+                    </div> 
+                    <!-- Professional Experience -->
+                    <div class="mb-4">
+                        
+                        <p class="font-bold text-md ">EXPERIENCE PROFESSIONNELLE</p>
+                        
+                        <hr class="border-t border-black border-3 w-65 my-1">
+                        <ul class="text-sm font-bold">
+                            <li><span id="nomentreprise"></span></li>
+                            <li><span id="posteoccupé"></span></li>
+                            <li><span id="duréedébut"></span></li>
+                            <li><span id="duréefin"></span></li>
+                            <li><span id="nombreannée"></span></li>
+                            <li><span id="descriptionmissions"></span></li>
+                        </ul>
+                        <div>
+                            <ul class="list-group" id="cvCompetences"><span id="data-id"></span></ul>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+        
+            </div>
+    </div>
+
+    <script src="age.js"></script>
+</body>
+
+</html>
