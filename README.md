@@ -100,22 +100,6 @@ Le CV est **entièrement personnalisable** et peut être **téléchargé en PDF*
 
 Ce projet est sous licence **MIT**.
 
----
-
-⭐ Si ce projet vous a plu, n’hésitez pas à mettre une étoile sur GitHub !
-
----
-
-**Merci d’avoir utilisé le Générateur de CV !**  
-Créez de beaux CV professionnels en quelques clics ✨
-
----
-
-**Tu veux que je modifie quelque chose ?**
-
-Par exemple :
-- Rendre le README plus court ?
-- Ajouter une section "Fonctionnalités à venir" ?
 - Changer le nom du projet (ex: "CV Maker Pro", "Smart CV Generator", etc.) ?
 - Ajouter des badges (HTML, Tailwind, JavaScript) ?
 
